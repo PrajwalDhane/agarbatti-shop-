@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Agarbatti Store</title>
+
+<style>
+    body {
+        margin:0;
+        font-family: 'Segoe UI', sans-serif;
+        background:#f2f2f2;
+    }
+
+    header {
+        background:#232f3e;
+        padding:18px;
+        text-align:center;
+        color:white;
+        font-size:26px;
+        font-weight:bold;
+    }
+
+    nav {
+        display:flex;
+        overflow-x:auto;
+        background:#ffffff;
+        padding:10px;
+        gap:10px;
+        border-bottom:1px solid #ddd;
+    }
+
+    nav button {
+        padding:10px 15px;
+        border:none;
+        border-radius:20px;
+        background:#232f3e;
+        color:white;
+        font-size:14px;
+        white-space:nowrap;
+        cursor:pointer;
+    }
+
+    section {
+        display:none;
+        padding:20px;
+    }
+
+    .active {
+        display:block;
+    }
+
+    /* Amazon style product layout */
+    .products {
+        display:flex;
+        flex-wrap:wrap;
+        gap:20px;
+        justify-content:center;
+    }
+
+    .card {
+        width:160px;
+        background:white;
+        padding:15px;
+        border-radius:10px;
+        box-shadow:0 3px 10px rgba(0,0,0,0.15);
+        text-align:center;
+        transition:0.3s;
+    }
+
+    .card:hover {
+        transform:scale(1.05);
+    }
+
+    .card img {
+        width:100%;
+        border-radius:10px;
+    }
+
+    .btn {
+        background:#ff9900;
+        color:white;
+        padding:10px;
+        border:none;
+        border-radius:6px;
+        margin-top:10px;
+        width:100%;
+        font-weight:bold;
+        cursor:pointer;
+    }
+
+    input, textarea {
+        width:100%;
+        padding:12px;
+        margin-top:10px;
+        border-radius:6px;
+        border:1px solid #aaa;
+    }
+</style>
+
+<script>
+function showPage(pageId) {
+    document.querySelectorAll("section").forEach(s => s.classList.remove("active"));
+    document.getElementById(pageId).classList.add("active");
+}
+
+function order(productName){
+    let phone = "917218402562";
+    let url = "https://wa.me/" + phone + "?text=I%20want%20to%20buy%20" + encodeURIComponent(productName);
+    window.open(url, "_blank");
+}
+
+function sendWA() {
+    let name = document.getElementById("name").value;
+    let msg = document.getElementById("message").value;
+
+    let url = "https://wa.me/917218402562?text="
+        + "Name: " + encodeURIComponent(name) + "%0A"
+        + "Message: " + encodeURIComponent(msg);
+
+    window.open(url, "_blank");
+}
+</script>
+
+</head>
+<body>
+
+<header>🕉️ Agarbatti & Fragrance Store</header>
+
+<nav>
+    <button onclick="showPage('home')">Home</button>
+    <button onclick="showPage('pooja')">Pooja Agarbatti</button>
+    <button onclick="showPage('premium')">Premium</button>
+    <button onclick="showPage('dhoop')">Dhoop</button>
+    <button onclick="showPage('contact')">Contact</button>
+</nav>
+
+<!-- HOME -->
+<section id="home" class="active">
+    <h2>Welcome to Our Store</h2>
+    <p>Premium handmade agarbatti & dhoop sticks with long-lasting fragrance.</p>
+    <img src="https://i.imgur.com/pWVD5pU.jpeg" style="width:100%; border-radius:10px;">
+</section>
+
+<!-- POOJA AGARBATTI -->
+<section id="pooja">
+    <h2>Pooja Agarbatti</h2>
+    <div class="products">
+
+        <div class="card">
+            <img src="https://i.imgur.com/8v0vUql.jpeg">
+            <h3>Sandalwood Agarbatti</h3>
+            <p>₹40 / Pack</p>
+            <button class="btn" onclick="order('Sandalwood Agarbatti')">Buy on WhatsApp</button>
+        </div>
+
+        <div class="card">
+            <img src="https://i.imgur.com/HySOgZC.jpeg">
+            <h3>Rose Agarbatti</h3>
+            <p>₹35 / Pack</p>
+            <button class="btn" onclick="order('Rose Agarbatti')">Buy on WhatsApp</button>
+        </div>
+
+    </div>
+</section>
+
+<!-- PREMIUM -->
+<section id="premium">
+    <h2>Premium Agarbatti</h2>
+    <div class="products">
+
+        <div class="card">
+            <img src="https://i.imgur.com/NmC7Hqo.jpeg">
+            <h3>Oudh Premium</h3>
+            <p>₹120 / Pack</p>
+            <button class="btn" onclick="order('Oudh Premium Agarbatti')">Buy on WhatsApp</button>
+        </div>
+
+        <div class="card">
+            <img src="https://i.imgur.com/udYlEkh.jpeg">
+            <h3>Jasmine Premium</h3>
+            <p>₹99 / Pack</p>
+            <button class="btn" onclick="order('Jasmine Premium Agarbatti')">Buy on WhatsApp</button>
+        </div>
+
+    </div>
+</section>
+
+<!-- DHOOP -->
+<section id="dhoop">
+    <h2>Dhoop Cones</h2>
+    <div class="products">
+
+        <div class="card">
+            <img src="https://i.imgur.com/lNX4w7t.jpeg">
+            <h3>Loban Dhoop</h3>
+            <p>₹50 / Box</p>
+            <button class="btn" onclick="order('Loban Dhoop Cones')">Buy on WhatsApp</button>
+        </div>
+
+        <div class="card">
+            <img src="https://i.imgur.com/mWq3LhV.jpeg">
+            <h3>Guggul Dhoop</h3>
+            <p>₹55 / Box</p>
+            <button class="btn" onclick="order('Guggul Dhoop Cones')">Buy on WhatsApp</button>
+        </div>
+
+    </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+    <h2>Contact / Order</h2>
+    <p>Fill the form to send order on WhatsApp:</p>
+
+    <input type="text" id="name" placeholder="Your Name">
+    <textarea id="message" placeholder="Your Order Details"></textarea>
+
+    <button class="btn" onclick="sendWA()">Send on WhatsApp</button>
+</section>
+
+</body>
+</html>
